@@ -14,6 +14,7 @@
           <div class="card">
               <div class="card-header d-flex justify-content-between">
                   <div>My Cart</div>
+                  @if(Gloudemans\Shoppingcart\Facades\Cart::count()>0)
                    <div class="d-flex">
                        <div>Change currency</div> 
                        @forelse ($currency as $current )
@@ -22,6 +23,7 @@
                            
                        @endforelse 
                    </div>
+                   @endif
               </div>
               <div class="card-body">
                   <table class="table">
@@ -64,7 +66,7 @@
                           <tr>
                               <td colspan="2"></td>
                               <td class="text-right">  
-                                  @if(Gloudemans\Shoppingcart\Facades\Cart::count( )>0)
+                                  @if(Gloudemans\Shoppingcart\Facades\Cart::count()>0)
                   <a href="{{route('clear-cart')}}" class="btn btn-lg btn-danger">Clear Cart</a>
                   @endif<a href="{{route('shop.index')}}" class="btn btn-lg btn-primary">Return to Shop</a></td>
                           </tr>
@@ -83,7 +85,7 @@
                                 
                           <tr><td>Subtotal</td><td class="text-right">{{$cart->first()->options->currency}}{{Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td></tr>
                           <tr><td>Total</td><td class="text-right">{{$cart->first()->options->currency}}{{Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td></tr>
-                          <tr><td colspan="2"><a href="#" class="btn btn-block btn-success">Proceed to Checkout</a></td></tr>
+                          <tr><td colspan="2"><a href="{{route('Checkout.index')}}" class="btn btn-block btn-success">Proceed to Checkout</a></td></tr>
                                  </table>
                              </div>
                          </div>
