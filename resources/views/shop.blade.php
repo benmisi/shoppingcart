@@ -33,7 +33,7 @@
              @forelse ($products as $product )
    
               <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
+              <div class="card">
   <img src="/img/{{$product->image}}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{$product->name}}</h5>
