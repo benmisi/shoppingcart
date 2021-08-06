@@ -6,7 +6,7 @@ use App\Models\currency;
 class currencyRepository{
 
     public function  getList(){
-        return currency::get();
+        return currency::wherestatus('ACTIVE')->get();
     }
 
     public function getCurrency($id){

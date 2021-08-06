@@ -8,9 +8,11 @@ class orders extends Component
 {
   
     public $orders;
-    public function __construct($orders)
+    public $type;
+    public function __construct($orders,$type)
     {
          $this->orders = $orders;
+         $this->type = $type;
     }
 
     /**

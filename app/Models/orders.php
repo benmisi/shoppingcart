@@ -23,4 +23,8 @@ class orders extends Model
         return $this->hasMany(receipts::class,'invoicenumber','invoicenumber');
     }
 
+    public function delivery(){
+        return $this->hasOne(delivery::class,'order_id','id');
+    }
+
 }

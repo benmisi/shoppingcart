@@ -13,7 +13,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <a class="dropdown-item" href="{{route('shop.index')}}">All</a>  
       @forelse ( $categorylist as $category)
-      <a class="dropdown-item" href="{{route('shop.category',$category->id)}}">{{$category->name}}</a>    
+      <a class="dropdown-item" href="{{route('shop.category',$category->id)}}">{{$category->name}}({{count($category->products)}})</a>    
       @empty
           
       @endforelse
@@ -30,11 +30,13 @@
   <div class="card mt-4">
      <div class="card-body">
          <div class="row">
+           @if (count($products)>0)             
+         
              @forelse ($products as $product )
    
               <div class="col-md-4">
-              <div class="card">
-  <img src="/img/{{$product->image}}" class="card-img-top" alt="...">
+              <div class="card mt-4">
+  <img src="/{{$product->image}}"  class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">{{$product->name}}</h5>
     <p class="card-text">{{$product->currency->name}}{{$product->price}}</p>
@@ -55,10 +57,16 @@
 </div>
               </div>   
              @empty
-             <div class="alert alert-danger text-center" role="alert">
-  No products found as yet
-</div>  
+  
              @endforelse
+
+             @else
+             <div class="col-md-12">
+             <div class="alert alert-danger text-center" role="alert">
+              No products found as yet
+            </div>  
+             </div>
+             @endif
          </div>
      </div>
   </div>

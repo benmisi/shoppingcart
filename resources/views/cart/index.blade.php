@@ -44,9 +44,9 @@
                               </td>
                               <td class="text-center">
                                   <div class="d-flex justify-content-center">
-                                      <a href="{{route('cart-reduce-qty',$ct->rowId)}}" class="btn btn-sm btn-danger"><i class="fa fa-minus"></i></a>
+                                      <a href="{{route('cart-reduce-qty',$ct->rowId)}}" class="btn btn-sm btn-link"><i class="fa fa-minus text-danger"></i></a>
                                       <div class="ml-1 mr-1"><b>{{$ct->qty}}</b></div>
-                                      <a href="{{route('cart-increase-qty',$ct->rowId)}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
+                                      <a href="{{route('cart-increase-qty',$ct->rowId)}}" class="btn btn-sm btn-link"><i class="fa fa-plus text-success"></i></a>
                                   </div>
                               </td>
                               <td class="text-right">
@@ -67,8 +67,8 @@
                               <td colspan="2"></td>
                               <td class="text-right">  
                                   @if(Gloudemans\Shoppingcart\Facades\Cart::count()>0)
-                  <a href="{{route('clear-cart')}}" class="btn btn-lg btn-danger">Clear Cart</a>
-                  @endif<a href="{{route('shop.index')}}" class="btn btn-lg btn-primary">Return to Shop</a></td>
+                  <a href="{{route('clear-cart')}}" class="btn btn-sm btn-danger">Clear Cart</a>
+                  @endif<a href="{{route('shop.index')}}" class="btn btn-sm btn-primary">Return to Shop</a></td>
                           </tr>
                          
                       </tbody>
@@ -78,7 +78,7 @@
                       <div class="col-md-4">
                          <div class="card">
                              <div class="card-header">
-                                 Card Totals
+                                 Cart Totals
                              </div>
                              <div class="card-body">
                                  <table class="table">

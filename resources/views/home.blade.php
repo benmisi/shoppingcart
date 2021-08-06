@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header bg-info">Pending</div>
                 <div class="card-body">
-                   <x-user.orders :orders="$pending"/>
+                   <x-user.orders :orders="$pending" type="view"/>
                </div>
            </div>
       </div>
@@ -18,7 +18,7 @@
                 <div class="card-header bg-danger">Cancelled </div>
 
                 <div class="card-body">
-                <x-user.orders :orders="$cancelled"/>
+                <x-user.orders :orders="$cancelled" type="view"/>
                 </div>
            </div>
       </div>
@@ -30,7 +30,7 @@
                 <div class="card-header bg-primary">Awaiting Delivery </div>
 
                 <div class="card-body">
-                <x-user.orders :orders="$awaiting"/>
+                <x-user.orders :orders="$awaiting" type="track"/>
                   </div>
            </div>
       </div>
@@ -40,7 +40,7 @@
                 <div class="card-header bg-success">Delivered</div>
 
                 <div class="card-body">
-                <x-user.orders :orders="$delivered"/>
+                <x-user.orders :orders="$delivered" type="rate"/>
                 </div>
            </div>
       </div>

@@ -11,38 +11,83 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumping structure for table shoppingcart.administrators
+CREATE TABLE IF NOT EXISTS `administrators` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ACTIVE',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table shoppingcart.administrators: ~1 rows (approximately)
+/*!40000 ALTER TABLE `administrators` DISABLE KEYS */;
+INSERT IGNORE INTO `administrators` (`id`, `name`, `surname`, `email`, `password`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'admin', 'admin@itsac.co.zw', '$2y$10$rDYAzZtmbh8DXnhz1RZU6.GQmX8E11iWkLyzdttmT1ubKDmakj2f2', 'ACTIVE', NULL, NULL),
+	(2, 'Ishe', 'Sithole', 'isithole@gmail.com', '$2y$10$ixuWZMQE4avud6vCkNtmnuvb.XV9MgZXwvPRfGkxv1fO.RIkbzl4C', 'ACTIVE', '2021-08-03 17:44:40', '2021-08-03 17:54:52');
+/*!40000 ALTER TABLE `administrators` ENABLE KEYS */;
+
 -- Dumping structure for table shoppingcart.categories
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table shoppingcart.categories: ~2 rows (approximately)
+-- Dumping data for table shoppingcart.categories: ~6 rows (approximately)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT IGNORE INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, 'Shoes', NULL, NULL),
-	(2, 'Shirts', NULL, NULL),
-	(3, 'Pants', NULL, NULL);
+INSERT IGNORE INTO `categories` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 'Shoes', 'ACTIVE', NULL, NULL),
+	(2, 'Shirts', 'ACTIVE', NULL, NULL),
+	(3, 'Pants', 'ACTIVE', NULL, NULL),
+	(4, 'Solar Equipments', 'DELETED', '2021-08-03 19:08:50', '2021-08-03 19:19:19'),
+	(5, 'Solar Panels', 'ACTIVE', '2021-08-05 09:30:00', '2021-08-05 09:30:00'),
+	(6, 'Motor Cars', 'ACTIVE', '2021-08-05 09:32:47', '2021-08-05 09:32:47');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.currencies
 CREATE TABLE IF NOT EXISTS `currencies` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table shoppingcart.currencies: ~2 rows (approximately)
 /*!40000 ALTER TABLE `currencies` DISABLE KEYS */;
-INSERT IGNORE INTO `currencies` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, 'USD', NULL, NULL),
-	(2, 'ZWL', NULL, NULL);
+INSERT IGNORE INTO `currencies` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 'USD', 'ACTIVE', NULL, NULL),
+	(2, 'ZWL', 'ACTIVE', NULL, NULL);
 /*!40000 ALTER TABLE `currencies` ENABLE KEYS */;
+
+-- Dumping structure for table shoppingcart.deliveries
+CREATE TABLE IF NOT EXISTS `deliveries` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `receiver` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `natid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `receipt_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `receipt_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `delivered_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table shoppingcart.deliveries: ~1 rows (approximately)
+/*!40000 ALTER TABLE `deliveries` DISABLE KEYS */;
+INSERT IGNORE INTO `deliveries` (`id`, `order_id`, `receiver`, `natid`, `receipt_date`, `receipt_time`, `delivered_by`, `created_at`, `updated_at`) VALUES
+	(1, 2, 'Vimbai Matenga', '33333333333333', '2021-08-20', '10:00', 1, '2021-08-06 08:58:19', '2021-08-06 08:58:19');
+/*!40000 ALTER TABLE `deliveries` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.exchangerates
 CREATE TABLE IF NOT EXISTS `exchangerates` (
@@ -50,15 +95,17 @@ CREATE TABLE IF NOT EXISTS `exchangerates` (
   `primary_currency_id` int(11) NOT NULL,
   `secondary_currency_id` int(11) NOT NULL,
   `amount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table shoppingcart.exchangerates: ~0 rows (approximately)
+-- Dumping data for table shoppingcart.exchangerates: ~1 rows (approximately)
 /*!40000 ALTER TABLE `exchangerates` DISABLE KEYS */;
-INSERT IGNORE INTO `exchangerates` (`id`, `primary_currency_id`, `secondary_currency_id`, `amount`, `created_at`, `updated_at`) VALUES
-	(1, 1, 2, '140', NULL, NULL);
+INSERT IGNORE INTO `exchangerates` (`id`, `primary_currency_id`, `secondary_currency_id`, `amount`, `user_id`, `created_at`, `updated_at`) VALUES
+	(1, 1, 2, '140', 1, NULL, NULL),
+	(2, 1, 2, '150', 1, '2021-08-05 11:26:30', '2021-08-05 11:26:30');
 /*!40000 ALTER TABLE `exchangerates` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.failed_jobs
@@ -90,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `invoicenumbers` (
 -- Dumping data for table shoppingcart.invoicenumbers: ~0 rows (approximately)
 /*!40000 ALTER TABLE `invoicenumbers` DISABLE KEYS */;
 INSERT IGNORE INTO `invoicenumbers` (`id`, `inv`, `created_at`, `updated_at`) VALUES
-	(1, 49, '2021-07-27 15:39:44', '2021-07-28 16:45:54');
+	(1, 55, '2021-07-27 15:39:44', '2021-08-03 16:12:34');
 /*!40000 ALTER TABLE `invoicenumbers` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.migrations
@@ -99,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table shoppingcart.migrations: ~10 rows (approximately)
+-- Dumping data for table shoppingcart.migrations: ~15 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -115,7 +162,10 @@ INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(12, '2021_07_27_150534_create_orderitems_table', 3),
 	(13, '2021_07_27_150608_create_invoicenumbers_table', 3),
 	(14, '2021_07_27_154236_create_onlinepayments_table', 4),
-	(15, '2021_07_27_154313_create_receipts_table', 4);
+	(15, '2021_07_27_154313_create_receipts_table', 4),
+	(16, '2021_08_03_150313_create_orderstatuses_table', 5),
+	(17, '2021_08_03_151525_create_administrators_table', 6),
+	(19, '2021_08_06_074552_create_deliveries_table', 7);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.onlinepayments
@@ -155,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `orderitems` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table shoppingcart.orderitems: ~6 rows (approximately)
 /*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
@@ -166,7 +216,8 @@ INSERT IGNORE INTO `orderitems` (`id`, `order_id`, `product_id`, `currency`, `qt
 	(4, 3, 3, 'ZWL', '1', '2800', '2021-07-28 15:42:41', '2021-07-28 15:42:41'),
 	(5, 3, 1, 'ZWL', '1', '1400', '2021-07-28 15:42:41', '2021-07-28 15:42:41'),
 	(6, 4, 2, 'USD', '1', '15', '2021-07-28 16:19:26', '2021-07-28 16:19:26'),
-	(7, 5, 1, 'ZWL', '1', '1400', '2021-07-28 16:22:18', '2021-07-28 16:22:18');
+	(7, 5, 1, 'ZWL', '1', '1400', '2021-07-28 16:22:18', '2021-07-28 16:22:18'),
+	(8, 6, 2, 'USD', '1', '15', '2021-08-03 14:46:09', '2021-08-03 14:46:09');
 /*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.orders
@@ -181,16 +232,31 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table shoppingcart.orders: ~4 rows (approximately)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT IGNORE INTO `orders` (`id`, `user_id`, `uuid`, `invoicenumber`, `delivery_address`, `notes`, `status`, `created_at`, `updated_at`) VALUES
-	(2, 1, '34317c66-0bf0-4b36-a677-ccefa4c43d16', 'inv202172711', '16832 stoneridge Park Harare Traflagar', NULL, 'AWAITING', '2021-07-27 15:40:50', '2021-07-28 15:37:29'),
+	(2, 1, '34317c66-0bf0-4b36-a677-ccefa4c43d16', 'inv202172711', '16832 stoneridge Park Harare Traflagar', NULL, 'DELIVERED', '2021-07-27 15:40:50', '2021-08-06 08:58:19'),
 	(3, 1, '63f99021-1fe7-488e-94ba-ae44edb2a861', 'inv2021728134', '16832 stoneridge Park Harare', NULL, 'AWAITING', '2021-07-28 15:42:41', '2021-07-28 16:14:25'),
 	(4, 1, '1dac2770-2dfc-4028-ac10-adc83abfef78', 'inv2021728139', '16832 stoneridge Park Harare', NULL, 'AWAITING', '2021-07-28 16:19:26', '2021-07-28 16:45:54'),
-	(5, 1, '1024e1da-c9b0-4947-a778-75a21e7c5bcf', 'inv2021728140', '16832 stoneridge Park Harare', NULL, 'AWAITING', '2021-07-28 16:22:18', '2021-07-28 16:44:42');
+	(5, 1, '1024e1da-c9b0-4947-a778-75a21e7c5bcf', 'inv2021728140', '16832 stoneridge Park Harare', NULL, 'AWAITING', '2021-07-28 16:22:18', '2021-07-28 16:44:42'),
+	(6, 1, 'a46f3383-9d8a-4e76-be94-33e05c233a5a', 'inv202183150', NULL, NULL, 'PENDING', '2021-08-03 14:46:09', '2021-08-03 14:46:09');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+
+-- Dumping structure for table shoppingcart.orderstatuses
+CREATE TABLE IF NOT EXISTS `orderstatuses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table shoppingcart.orderstatuses: ~0 rows (approximately)
+/*!40000 ALTER TABLE `orderstatuses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderstatuses` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
@@ -214,17 +280,19 @@ CREATE TABLE IF NOT EXISTS `products` (
   `currency_id` int(11) NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '*',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table shoppingcart.products: ~3 rows (approximately)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT IGNORE INTO `products` (`id`, `name`, `description`, `category_id`, `image`, `currency_id`, `price`, `quantity`, `created_at`, `updated_at`) VALUES
-	(1, 'black tshirt', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '2', 'products/blacktshirt.png', 1, '10', '*', NULL, NULL),
-	(2, 'Kaky Pants', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '1', 'products/pants.png', 1, '15', '*', NULL, NULL),
-	(3, 'Shoes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '3', 'products/shoes.png', 1, '20', '*', NULL, NULL);
+INSERT IGNORE INTO `products` (`id`, `name`, `description`, `category_id`, `image`, `currency_id`, `price`, `quantity`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 'black tshirt', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '2', 'products/blacktshirt.png', 1, '10', '*', 'ACTIVE', NULL, NULL),
+	(2, 'Kaky Pants', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '1', 'products/pants.png', 1, '15', '*', 'ACTIVE', NULL, NULL),
+	(3, 'Shoes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Donec fringilla sollicitudin metus nec ultricies. Praesent euismod rhoncus turpis at sollicitudin. Ut neque nulla, placerat eget mi quis, laoreet mattis massa. Phasellus a sapien ac mauris cursus dictum ut sit amet lectus. Maecenas volutpat dignissim enim nec tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nibh elit, molestie nec orci in, dictum consequat nulla. Aliquam condimentum neque eget ipsum ultrices, sit amet convallis leo euismod', '3', 'products/shoes.png', 1, '20', '*', 'ACTIVE', NULL, NULL),
+	(4, 'Toyota Corrola', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit finibus nunc at dictum. Cras eu mauris vel ex feugiat vehicula vitae non velit. Aliquam ac cursus nisl. Nullam at interdum libero. Phasellus quis tincidunt odio. Don', '6', 'products/omW8wGSDW6uITMG9yVzVzPrj5ziO7lWyeBd9n7zD.jpg', 1, '6000', '10', 'DELETED', '2021-08-05 09:33:27', '2021-08-05 10:31:11');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Dumping structure for table shoppingcart.receipts
