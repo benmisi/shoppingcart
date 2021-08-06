@@ -14,7 +14,7 @@ class loginRepository{
 
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('admin.home');
+            return redirect()->route('admin.home');
         }
 
         return redirect()->back()->with('statusError','The provided credentials do not match our records');
