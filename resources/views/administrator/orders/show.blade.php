@@ -15,7 +15,7 @@
        <div> Order</div>
        <div> 
            {{$order->status}} @if ($order->status =='AWAITING')
-           <x-administrator.updateDelivery>
+           <x-administrator.update-delivery>
            <div class="row">
                <x-forms.input type="text" name="name" label="Received By" size="col-md-12"/>
             </div>
@@ -29,7 +29,7 @@
                <x-forms.input type="time" name="time" label="Received at" size="col-md-12"/>
             </div>
             <input type="hidden" name="id" value="{{$order->id}}"/>
-           </x-administrator.updateDelivery>
+           </x-administrator.update-delivery>
        @endif</div>
 
     </div>
