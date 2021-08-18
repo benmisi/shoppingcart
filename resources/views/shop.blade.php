@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <x-alert/>
   <div class="card">
       <div class="card-body d-flex justify-content-between">
@@ -27,49 +27,15 @@
       
   </div>
 
-  <div class="card mt-4">
-     <div class="card-body">
-         <div class="row">
-           @if (count($products)>0)             
-         
-             @forelse ($products as $product )
+  <div class="row d-flex">
    
-              <div class="col-md-4">
-              <div class="card mt-4">
-  <img src="/{{$product->image}}"  class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">{{$product->name}}</h5>
-    <p class="card-text">{{$product->currency->name}}{{$product->price}}</p>
-    @if($product->quantity > 0 || $product->quantity =='*')
-        @if($cart->where('id',$product->id)->count())
-         <a href="{{route('Cart.index')}}" class="btn btn-secondary"> View cart</a>
-        @else
-        <form  method="POST" action="{{route('Cart.store')}}">
-            @csrf
-            <input type="hidden" name="product_id" value="{{$product->id}}"/>
-      <button type="submit" class="btn btn-primary">Add to cart</button>
-        </form>
-        @endif
-      @else
-         <p class="text-center text-danger"><b>Out of stock</b></p>
-      @endif
-  </div>
-</div>
-              </div>   
-             @empty
-  
-             @endforelse
+     <x-shop :products="$products" :cart="$cart"/>
 
-             @else
-             <div class="col-md-12">
-             <div class="alert alert-danger text-center" role="alert">
-              No products found as yet
-            </div>  
-             </div>
-             @endif
-         </div>
-     </div>
-  </div>
+
+   <x-mycart :cart="$cart" :currency="$currency"/>
+ 
+</div>
+
 </div>
 
 @endsection

@@ -24,7 +24,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/img/logo_new.png"/>
                 </a>
@@ -43,7 +43,7 @@
                         <!-- Authentication Links -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('Cart.index')}}">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <i class="fa fa-5 fa-shopping-cart" aria-hidden="true"></i>
                                 <span class="badge badge-danger" style="float:right;margin-bottom:-15px;margin-left:4px;font-size:10px">{{Gloudemans\Shoppingcart\Facades\Cart::count()}}</span>
                         </a>
                         </li>

@@ -1,4 +1,18 @@
 .card-img-top{
-    height: 200px;
-    width: 200px;
+    height: 40%;
+    width: 40%;
+    margin: auto;
+    
+}
+
+.product_image{
+   
+    width: 70%;
+}
+
+.fa-shopping-cart{
+    font-size: 40px !important;
+}
+.fa-user-circle{
+    font-size: 40px !important;  
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\categoryRepository;
+use App\Repositories\currencyRepository;
 use Illuminate\Http\Request;
 use App\Repositories\productsRepository;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -12,10 +13,12 @@ class productsController extends Controller
     
     private $products;
     private $categories;
-    public function __construct(productsRepository $products,categoryRepository $categories)
+    private $currency;
+    public function __construct(productsRepository $products,categoryRepository $categories,currencyRepository $currency)
     {
       $this->products = $products;  
       $this->categories = $categories;
+      $this->currency = $currency;
     }
     public function index()
     {
@@ -23,8 +26,9 @@ class productsController extends Controller
         $products = $this->products->getList();
         $categorylist =  $this->categories->getList();
         $cart = Cart::content();
+        $currency = $this->currency->getList();
         
-         return view('shop',compact('products','categorylist','cart'));
+         return view('shop',compact('products','categorylist','cart','currency'));
     }
 
     /**
@@ -56,7 +60,11 @@ class productsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->products->getProduct($id);
+        $cart = Cart::content();
+        $currency = $this->currency->getList();
+        
+        return view('shopview',compact('product','cart','currency'));
     }
 
     /**
@@ -70,7 +78,8 @@ class productsController extends Controller
         $products = $this->products->getProductsByCategory($id);
         $categorylist =  $this->categories->getList();
         $cart = Cart::content();
-        return view('shop',compact('products','categorylist','cart'));
+        $currency = $this->currency->getList();
+        return view('shop',compact('products','categorylist','cart','currency'));
     }
 
     /**
