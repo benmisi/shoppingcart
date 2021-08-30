@@ -1,5 +1,5 @@
-<div class="col-md-9">
 
+ 
          <div class="row">
            @if (count($products)>0)             
          
@@ -44,4 +44,3 @@
              @endif
 </div>
        
-</div>

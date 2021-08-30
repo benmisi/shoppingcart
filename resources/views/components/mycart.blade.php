@@ -1,4 +1,4 @@
-<div class="col-md-3 mt-4">    
+  
 <div class="card">
               <div class="card-header d-flex justify-content-between">
                   <div>My Cart</div>
@@ -93,4 +93,3 @@
             
           </div>
 
-</div>

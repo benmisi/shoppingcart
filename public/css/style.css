@@ -1,3 +1,10 @@
+body{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff ;
+}
 .card-img-top{
     height: 40%;
     width: 40%;
@@ -11,8 +18,114 @@
 }
 
 .fa-shopping-cart{
-    font-size: 40px !important;
+    font-size: 18px !important;
 }
 .fa-user-circle{
-    font-size: 40px !important;  
+    font-size: 18px !important;  
+}
+
+.banner-heading{
+    font-size: 42px;
+    line-height: 1.38;
+}
+.banner-content{
+    font-size: 18px !important;
+}
+.banner{
+    background-image: url('/img/banner.png');
+    width: 100%;
+    background-size: cover;
+    height: 400px;
+    padding: 140px 10px 150px;
+}
+
+.carousel{
+    margin-top: 10px;
+  }
+  .carousel-inner{
+    height: 100px;
+  }
+  .carousel-caption{
+    color: #fff;
+    top: 50%;
+  }
+  .about-left{
+      font-size: 40px;
+      font-weight: 700;
+      color: #0066cb;
+  }
+  .about-right{
+    font-size: 40px;
+      font-weight: 700;
+      margin-left: 5px;
+      color: #f50607;
+      
+}
+.smline{
+    width: 80px;
+    height: 2px;
+    background-color: #0067cb;
+    margin: 10px auto;
+}
+.bg-call{
+    background-color: #f8f9fb;
+    height: 200px;
+    margin-top: -50px;
+}
+.footer {
+    width: 100%;
+    padding-top: 20px;
+    background: #1a1a1a;
+}
+.page_section {
+    padding-bottom: 117px;
+}
+.logo{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    vertical-align: middle;
+    text-transform: uppercase;
+    margin-left: 3px;
+}
+.footer_about_text{
+    color: #a5a5a5;
+    list-style-type: none;
+    text-align: left;
+    margin-left: -40px;
+    margin-top: 10px;
+}
+.footer_column_title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-top: 15px;
+}
+.footer_contact_item {
+    font-size: 14px;
+    font-weight: 400;
+    color: #a5a5a5;
+    margin-bottom: 22px;
+    list-style-type: none;
+    text-align: left;
+}
+.footer_contact_icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+ul .footer_contact_item {
+    list-style-type: none;
+    text-align: left;
+    margin-left: -40px;
+    margin-top: 10px;
+}
+ul .footer_contact_item li{
+    margin-left: -50px;
+}
+.nav-item{
+    font-size: 15px !important;
 }
