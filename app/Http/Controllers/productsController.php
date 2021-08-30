@@ -49,7 +49,12 @@ class productsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $products = $this->products->search($request);
+       $categorylist =  $this->categories->getList();
+        $cart = Cart::content();
+        $currency = $this->currency->getList();
+        
+         return view('results',compact('products','categorylist','cart','currency'));
     }
 
     /**
@@ -63,8 +68,9 @@ class productsController extends Controller
         $product = $this->products->getProduct($id);
         $cart = Cart::content();
         $currency = $this->currency->getList();
+        $categorylist =  $this->categories->getList();
         
-        return view('shopview',compact('product','cart','currency'));
+        return view('shopview',compact('product','categorylist','cart','currency'));
     }
 
     /**
@@ -79,7 +85,7 @@ class productsController extends Controller
         $categorylist =  $this->categories->getList();
         $cart = Cart::content();
         $currency = $this->currency->getList();
-        return view('shop',compact('products','categorylist','cart','currency'));
+        return view('results',compact('products','categorylist','cart','currency'));
     }
 
     /**

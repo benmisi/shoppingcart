@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Models\products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as IlluminateRequest;
 
 class productsRepository{
 
@@ -13,6 +14,14 @@ class productsRepository{
     public function getProduct($id){
 
         return products::with('currency','category')->whereid($id)->wherestatus('ACTIVE')->first();
+    }
+
+    public function search(Request $request){
+        return products::with('currency','category')
+        ->when($request->term,function($query,$term){
+            $query->where('name','LIKE','%'.$term.'%');
+            $query->orWhere('description','LIKE','%'.$term.'%');
+        })->wherestatus('ACTIVE')->get();
     }
 
     public function getProductsByCategory($id){

@@ -50,20 +50,7 @@
                         <li class="nav-item">
                         <a class="nav-link" href="https://itsac.co.zw">Main website</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Courses Categores
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-
-                            @forelse ($categorylist as $category )
-                            <li><a class="dropdown-item" href="{{route('shop.category',$category->id)}}">{{$category->name}}</a></li> 
-                            @empty
-                                
-                            @endforelse
-                           
-                            </ul>
-                        </li>
+                      
                         
                        
                         @guest

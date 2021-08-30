@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[productsController::class,'index'])->name('shop.index');
+Route::post('/search',[productsController::class,'store'])->name('shop.search');
 Route::get('/product/{id}',[productsController::class,'show'])->name('shop.product');
 Route::get('/product/{id}/by-category',[productsController::class,'edit'])->name('shop.category');
 

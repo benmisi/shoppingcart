@@ -48,13 +48,15 @@
 
        
 
-             
+             <form  method="POST" action="{{route('shop.search')}}">
+                 @csrf
              <div class="input-group mb-3 input-group-lg">               
-                <input type="text" class="form-control outline" placeholder="Search a course" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <input type="text" class="form-control outline" name="term" placeholder="Search a course" aria-label="Example text with button addon" aria-describedby="button-addon1">
                 <div class="input-group-append">
-                    <button class="btn btn-success" type="button" id="button-addon1"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-success" type="submit" id="button-addon1"><i class="fa fa-search"></i></button>
                 </div>
             </div>
+          </form>
         </div>
 
 
@@ -70,7 +72,7 @@
         <div class="smline"></div>
     </div>
 </div>
-<div class="row mt-2">
+<div class="row mt-2 mb-2">
     <div class="col-md-10 offset-md-1 text-center mt-2 mb-4">
     ITSAC is a world-class institute that inspires, promotes and enables professional excellence. Our clients and students are working towards attaining or already possess internationally recognised and respected qualifications in the fields of Information Technology, Information Security, IT Audit and Business Continuity Management. ITSAC provides training courses for international Certifications that include CISA, CISM, CISSP, C|EH, ISO, CPT as well as in-house training programme as short courses.
     </div>
